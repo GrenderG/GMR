@@ -1,0 +1,139 @@
+<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+ 
+  <Frame name="GMR_Main">
+    <Scripts>
+      <OnLoad>
+        GMR.OnLoad()
+      </OnLoad>
+      <OnEvent>
+        GMR.OnEvent(event)
+      </OnEvent>
+      <OnUpdate>
+        GMR.OnUpdate()
+      </OnUpdate>
+    </Scripts>
+  </Frame>
+
+  <CheckButton name="CheckButtonGMRTemplate" inherits="UICheckButtonTemplate" virtual="true">
+    <Size>
+      <AbsDimension x="20" y="20" />
+    </Size>
+  </CheckButton>
+  <Button name="ButtonItemTemplate" virtual="true">
+  <Size>
+    <AbsDimension x="32" y="32" />
+  </Size>
+  <Layers>
+    <Layer level="BACKGROUND">
+      <Texture file="Interface\Buttons\UI-EmptySlot-Disabled">
+        <Size>
+          <AbsDimension x="52" y="52" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="-10" y="10" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+    </Layer>
+  </Layers>
+  </Button>
+
+  <!--Minimap Button-->
+  <Button name="GMR_MinimapButton" parent="Minimap" enableMouse="true" movable="true" hidden="false">
+    <Size>
+      <AbsDimension x="33" y="33"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOPLEFT"/>
+    </Anchors>
+    <Layers>
+      <Layer level="HIGH">
+        <Texture name="GMR_MinimapButton_Icon" file="Interface\MailFrame\Mail-Icon.blp">
+          <Size>
+            <AbsDimension x="21" y="21"/>
+          </Size>
+          <Anchors>
+            <Anchor point="TOPLEFT">
+              <Offset>
+                <AbsDimension x="7" y="-6"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </Texture>
+      </Layer>
+      <Layer level="OVERLAY">
+        <Texture file="Interface\Minimap\MiniMap-TrackingBorder">
+          <Size>
+            <AbsDimension x="56" y="56"/>
+          </Size>
+          <Anchors>
+            <Anchor point="TOPLEFT"/>
+          </Anchors>
+        </Texture>
+      </Layer>
+    </Layers>
+    <Frames>
+      <Frame name="GMR_MinimapButton_DraggingFrame" hidden="true">
+        <Scripts>
+          <OnUpdate>
+            GMR.MinimapDrag()
+          </OnUpdate>
+        </Scripts>
+      </Frame>
+    </Frames>
+    <HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
+    <Scripts>
+      <OnLoad>
+        this:RegisterForClicks("LeftButtonUp","RightButtonUp")
+        this:RegisterForDrag("LeftButton","RightButton")
+      </OnLoad>
+      <OnDragStart>
+        this:LockHighlight()
+        GMR_MinimapButton_DraggingFrame:Show()
+      </OnDragStart>
+      <OnDragStop>
+        this:UnlockHighlight()
+        GMR_MinimapButton_DraggingFrame:Hide()
+      </OnDragStop>
+      <OnClick>
+        GMR.Click()
+      </OnClick>
+      <OnEnter>
+        GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
+        GameTooltip:AddLine("GMR")
+        GameTooltip:AddLine("Current icon line:\nHypocycloid")
+        GameTooltip:Show()
+      </OnEnter>>
+      <OnLeave>
+         GameTooltip:Hide()
+      </OnLeave>>
+    </Scripts>
+  </Button>
+  <CheckButton name="TabPanelTemplate" virtual="true">
+    <Size>
+      <AbsDimension x="32" y="32" />
+    </Size>
+    <Layers>
+      <Layer level="BACKGROUND">
+        <Texture name="$parentTexture" file="Interface\SpellBook\SpellBook-SkillLineTab">
+          <Size>
+            <AbsDimension x="64" y="64" />
+          </Size>
+          <Anchors>
+            <Anchor point="TOPLEFT">
+              <Offset>
+                <AbsDimension x="-3" y="11" />
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </Texture>
+      </Layer>
+    </Layers>
+    <NormalTexture />
+    <HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD" />
+    <CheckedTexture file="Interface\Buttons\CheckButtonHilight" alphaMode="ADD" />
+  </CheckButton>
+</Ui>

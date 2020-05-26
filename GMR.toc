@@ -1,0 +1,32 @@
+## Interface:11200
+## Title: GMR
+## Notes: GMRest - automation routine
+## Author: Shuraken
+
+ShurakenLib.lua
+GMR_graphic_lib.lua
+CommandFrame\GMR_template_data.lua
+CommandFrame\GMR_TemplateTable.lua
+DataFrame\GMR_SortData.lua
+DataFrame\GMR_DataVisualization.lua
+SendGetSystem\GMR_command_data.lua
+SendGetSystem\GMR_command_patterns.lua
+SendGetSystem\GMR_command_handle_functions.lua
+SendGetSystem\GMR_command_sequence.lua
+SendGetSystem\GMR_get_command.lua
+CommandFrame\GMR_CommandTable_graphic.xml
+CommandFrame\GMR_CommandTable_graphic.lua
+CommandFrame\GMR_CommandTable_functionality.lua
+
+TicketFrame\GMR_ticket_template_data.lua
+TicketFrame\GMR_ticket_template_table.lua
+TicketFrame\GMR_ticket_graphic.xml
+TicketFrame\GMR_ticket_functionality.lua
+TicketFrame\GMR_ticket_graphic.lua
+
+Options.lua
+Menu.lua
+GMR.lua
+GMR.xml
+
+## SavedVariables: GMRConfig
